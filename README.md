@@ -79,4 +79,27 @@ az vm show \
 
 You see your VM's public IP address, for example, 104.211.9.245.
 
-In a new browser tab, navigate to your VM's IP address (<http://> followed by the IP address).
+In a new browser tab, navigate to your VM's IP address (<http://> followed by the IP address).  
+
+## Scale up your VM
+
+### increase your VM's size to Standard_DS3_v2
+
+```shell
+az vm resize \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --size Standard_DS3_v2
+```  
+
+### verify that your VM is running the new size
+
+```shell
+az vm show \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --query "hardwareProfile" \
+  --output tsv
+```
+
+Output: Standard_DS3_v2
